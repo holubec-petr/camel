@@ -125,14 +125,17 @@ public class KafkaRecordProcessor {
 
         // processing failed due to an unhandled exception, what should we do
         if (configuration.isBreakOnFirstError()) {
-            // we are failing and we should break out
-            if (LOG.isWarnEnabled()) {
-                LOG.warn("Error during processing {} from topic: {}", exchange, partition.topic(), exchange.getException());
-                LOG.warn("Will seek consumer to offset {} and start polling again.", partitionLastOffset);
-            }
+            // we don't want to reset offset if nothing was processed
+            if (partitionLastOffset != ProcessingResult.newUnprocessed().getPartitionLastOffset()) {
+                // we are failing and we should break out
+                if (LOG.isWarnEnabled()) {
+                    LOG.warn("Error during processing {} from topic: {}", exchange, partition.topic(), exchange.getException());
+                    LOG.warn("Will seek consumer to offset {} and start polling again.", partitionLastOffset);
+                }
 
-            // force commit, so we resume on next poll where we failed
-            commitManager.forceCommit(partition, partitionLastOffset);
+                // force commit, so we resume on next poll where we failed
+                commitManager.forceCommit(partition, partitionLastOffset);
+            }
 
             // continue to next partition
             return true;
