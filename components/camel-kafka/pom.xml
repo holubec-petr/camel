@@ -23,13 +23,14 @@
     <parent>
         <groupId>org.apache.camel</groupId>
         <artifactId>components</artifactId>
-        <version>4.8.7-SNAPSHOT</version>
+        <version>4.8.6</version>
     </parent>
 
     <artifactId>camel-kafka</artifactId>
+    <version>4.8.6.1-QUADIENT</version>
     <packaging>jar</packaging>
     <name>Camel :: Kafka</name>
-    <description>Camel Kafka support</description>
+    <description>Camel Kafka support for Inspire Scaler</description>
 
     <dependencies>
 
@@ -37,14 +38,17 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-support</artifactId>
+            <version>4.8.6</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-health</artifactId>
+            <version>4.8.6</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-console</artifactId>
+            <version>4.8.6</version>
         </dependency>
 
         <!-- kafka java client -->
@@ -77,7 +81,7 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-test-infra-core</artifactId>
-            <version>${project.version}</version>
+            <version>4.8.6</version>
             <scope>test</scope>
             <type>test-jar</type>
         </dependency>
@@ -85,7 +89,7 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-test-infra-kafka</artifactId>
-            <version>${project.version}</version>
+            <version>4.8.6</version>
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
@@ -93,6 +97,7 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-jackson</artifactId>
+            <version>4.8.6</version>
             <scope>test</scope>
         </dependency>
 
@@ -100,12 +105,14 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-direct</artifactId>
+            <version>4.8.6</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-resilience4j</artifactId>
+            <version>4.8.6</version>
             <scope>test</scope>
         </dependency>
 
@@ -116,6 +123,7 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-test-junit5</artifactId>
+            <version>4.8.6</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -135,6 +143,20 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>scaler-artifactory</id>
+            <url>https://pkgs.dev.azure.com/storeit/inspire-scaler/_packaging/scaler-artifactory/maven/v1</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>scaler-artifactory</id>
+            <url>https://pkgs.dev.azure.com/storeit/inspire-scaler/_packaging/scaler-artifactory/maven/v1</url>
+        </repository>
+    </distributionManagement>
 
     <profiles>
         <profile>
@@ -224,6 +246,18 @@
                                     <groups>health,idempotent,breakOnFirstError</groups>
                                     <forkedProcessTimeoutInSeconds>1200</forkedProcessTimeoutInSeconds>
                                 </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-deploy-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>default-deploy</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
                             </execution>
                         </executions>
                     </plugin>

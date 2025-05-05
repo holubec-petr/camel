@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.apache.camel</groupId>
         <artifactId>core</artifactId>
-        <version>4.8.7-SNAPSHOT</version>
+        <version>4.8.6</version>
     </parent>
 
     <artifactId>camel-support</artifactId>
@@ -42,22 +42,27 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-api</artifactId>
+            <version>4.8.6</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-management-api</artifactId>
+            <version>4.8.6</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-util</artifactId>
+            <version>4.8.6</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-util-json</artifactId>
+            <version>4.8.6</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-xml-jaxp-util</artifactId>
+            <version>4.8.6</version>
         </dependency>
 
         <dependency>

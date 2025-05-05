@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.apache.camel</groupId>
         <artifactId>camel-parent</artifactId>
-        <version>4.8.7-SNAPSHOT</version>
+        <version>4.8.6</version>
         <relativePath>../parent</relativePath>
     </parent>
 
@@ -275,7 +275,7 @@
         <module>camel-snakeyaml</module>
         <module>camel-snmp</module>
         <module>camel-soap</module>
-        <module>camel-solr</module>        
+        <module>camel-solr</module>
         <module>camel-splunk</module>
         <module>camel-splunk-hec</module>
         <module>camel-spring-batch</module>
@@ -365,6 +365,7 @@
             <plugin>
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-package-maven-plugin</artifactId>
+                <version>4.8.6</version>
                 <configuration>
                     <!-- set to true to make build fail fast if missing documentation in docs files -->
                     <failFast>false</failFast>
@@ -389,7 +390,7 @@
                     <dependency>
                         <groupId>org.apache.camel</groupId>
                         <artifactId>camel-core-model</artifactId>
-                        <version>${project.version}</version>
+                        <version>4.8.6</version>
                         <scope>compile</scope>
                     </dependency>
                 </dependencies>
